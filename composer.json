@@ -1,0 +1,26 @@
+{
+    "name": "codeinbb/backend02",
+    "description": "Code in BB [Backend] - 02 training",
+    "type": "library",
+    "keywords": ["kata", "training", "coaching"],
+    "homepage": "https://github.com/mgrajcarek/code-in-bb-02",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Maciej Grajcarek",
+            "email": "mgrajcarek@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.1"
+    },
+    "autoload": {
+        "psr-4": {"CodeInBB\\": "src/"}
+    },
+    "autoload-dev": {
+        "psr-4": {"Test\\CodeInBB\\": "tests/"}
+    }
+}
