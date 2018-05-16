@@ -8,6 +8,9 @@ use PHPUnit\Framework\TestCase;
 class CarTest extends TestCase
 {
 
+    /**
+     * @var Car
+     */
     private $car;
 
     public function setup()
@@ -38,5 +41,12 @@ class CarTest extends TestCase
         $this->car->registrationNumber = 'SB 12345';
 
         $this->assertEquals('SB 12345', $this->car->registrationNumber);
+    }
+
+    public function testRegistration()
+    {
+        $this->car->register('SB 12345');
+
+        $this->assertEquals('SB 12345', $this->car->getRegNumber());
     }
 }
