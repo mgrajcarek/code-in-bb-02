@@ -2,4 +2,11 @@
 
 namespace CodeInBB;
 
-class Car {}
+class Car
+{
+
+    private $registrationNumber;
+
+    public $yearOfProduction;
+
+}
