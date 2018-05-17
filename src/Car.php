@@ -13,6 +13,10 @@ class Car
 
     public function register(string $regNumber)
     {
+        if (strlen($regNumber) <= 5) {
+            throw new \Exception('Expected minimum 5 signs');
+        }
+
         $this->registrationNumber = $regNumber;
     }
 

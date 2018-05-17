@@ -43,10 +43,19 @@ class CarTest extends TestCase
         $this->assertEquals('SB 12345', $this->car->registrationNumber);
     }
 
-    public function testRegistration()
+    public function testCarNumberRegistration()
     {
         $this->car->register('SB 12345');
 
         $this->assertEquals('SB 12345', $this->car->getRegNumber());
+    }
+
+    /**
+     * @expectedException \Exception
+     * @expectedExceptionMessage Expected minimum 5 signs
+     */
+    public function testRegistrationMinimalLength()
+    {
+        $this->car->register('SB');
     }
 }
