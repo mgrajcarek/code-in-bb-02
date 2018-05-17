@@ -15,20 +15,12 @@ class CarTest extends TestCase
 
     public function setup()
     {
-        $this->car = new Car();
+        $this->car = new Car(2018);
     }
 
     public function testIsACar()
     {
         $this->assertInstanceOf(Car::class, $this->car);
-    }
-
-
-    public function testAccessToYearOfProductionProperty()
-    {
-        $this->car->yearOfProduction = 2018;
-
-        $this->assertEquals(2018, $this->car->yearOfProduction);
     }
 
     /**
@@ -57,5 +49,19 @@ class CarTest extends TestCase
     public function testRegistrationMinimalLength()
     {
         $this->car->register('SB');
+    }
+
+    public function testYearOfProduction()
+    {
+        $car = new Car(2010);
+        $this->assertEquals(2010, $car->getYearOfProduction());
+    }
+
+    public function testCurrentYearOfProductionAsDefault()
+    {
+        $car = new Car();
+        $currentYear = (new \DateTime())->format('Y');
+
+        $this->assertEquals($currentYear, $car->getYearOfProduction());
     }
 }

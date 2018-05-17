@@ -8,8 +8,16 @@ class Car
 {
 
     private $registrationNumber;
+    private $yearOfProduction;
 
-    public $yearOfProduction;
+    public function __construct(int $yearOfProduction = null)
+    {
+        if (!$yearOfProduction) {
+            $yearOfProduction = (int) (new \DateTime())->format('Y');
+        }
+
+        $this->yearOfProduction = $yearOfProduction;
+    }
 
     public function register(string $regNumber)
     {
@@ -23,6 +31,11 @@ class Car
     public function getRegNumber(): string
     {
         return $this->registrationNumber;
+    }
+
+    public function getYearOfProduction(): int
+    {
+        return $this->yearOfProduction;
     }
 
 
