@@ -15,7 +15,9 @@ class CarTest extends TestCase
 
     public function setup()
     {
-        $this->car = new Car(2018);
+        $this->car = new Car(
+            new \DateTime('2010-11-01')
+        );
     }
 
     public function testIsACar()
@@ -53,15 +55,19 @@ class CarTest extends TestCase
 
     public function testYearOfProduction()
     {
-        $car = new Car(2010);
-        $this->assertEquals(2010, $car->getYearOfProduction());
+        $dateOfProduction = new \DateTime('2010-05-01');
+
+        $car = new Car($dateOfProduction);
+        $this->assertEquals($dateOfProduction, $car->getDateOfProduction());
     }
 
-    public function testCurrentYearOfProductionAsDefault()
+    public function testFirstDayOfCurrentWeekAsDefaultDateOfProduction()
     {
         $car = new Car();
-        $currentYear = (new \DateTime())->format('Y');
+        $currentYear = new \DateTime('midnight previous monday');
 
-        $this->assertEquals($currentYear, $car->getYearOfProduction());
+        $this->assertEquals($currentYear, $car->getDateOfProduction());
     }
+
+
 }

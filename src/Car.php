@@ -7,16 +7,23 @@ namespace CodeInBB;
 class Car
 {
 
+    /**
+     * @var string
+     */
     private $registrationNumber;
-    private $yearOfProduction;
 
-    public function __construct(int $yearOfProduction = null)
+    /**
+     * @var \DateTime
+     */
+    private $dateOfProduction;
+
+    public function __construct(\DateTime $yearOfProduction = null)
     {
         if (!$yearOfProduction) {
-            $yearOfProduction = (int) (new \DateTime())->format('Y');
+            $yearOfProduction = new \DateTime('midnight previous monday');
         }
 
-        $this->yearOfProduction = $yearOfProduction;
+        $this->dateOfProduction = $yearOfProduction;
     }
 
     public function register(string $regNumber)
@@ -33,9 +40,9 @@ class Car
         return $this->registrationNumber;
     }
 
-    public function getYearOfProduction(): int
+    public function getDateOfProduction(): \DateTime
     {
-        return $this->yearOfProduction;
+        return $this->dateOfProduction;
     }
 
 
