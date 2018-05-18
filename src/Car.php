@@ -7,6 +7,9 @@ namespace CodeInBB;
 class Car
 {
 
+    private const ENGINE_ON = 'on';
+    private const ENGINE_OFF = 'off';
+
     /**
      * @var string
      */
@@ -16,6 +19,11 @@ class Car
      * @var \DateTime
      */
     private $dateOfProduction;
+
+    /**
+     * @var string
+     */
+    private $engineStatus = self::ENGINE_OFF;
 
     public function __construct(\DateTime $yearOfProduction = null)
     {
@@ -43,6 +51,21 @@ class Car
     public function getDateOfProduction(): \DateTime
     {
         return $this->dateOfProduction;
+    }
+
+    public function isEngineOn(): bool
+    {
+        return $this->engineStatus === self::ENGINE_ON;
+    }
+
+    public function turnEngineOn(): void
+    {
+        $this->engineStatus = self::ENGINE_ON;
+    }
+
+    public function turnEngineOff(): void
+    {
+        $this->engineStatus = self::ENGINE_OFF;
     }
 
 

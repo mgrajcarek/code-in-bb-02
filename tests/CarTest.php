@@ -69,5 +69,31 @@ class CarTest extends TestCase
         $this->assertEquals($currentYear, $car->getDateOfProduction());
     }
 
+    public function testTurningEngineOn()
+    {
+        $this->assertFalse(
+            $this->car->isEngineOn()
+        );
+
+        $this->car->turnEngineOn();
+
+        $this->assertTrue(
+            $this->car->isEngineOn()
+        );
+    }
+
+    public function testTurningEngineOff()
+    {
+        $this->car->turnEngineOn();
+        $this->assertTrue(
+            $this->car->isEngineOn()
+        );
+
+        $this->car->turnEngineOff();
+
+        $this->assertFalse(
+            $this->car->isEngineOn()
+        );
+    }
 
 }
