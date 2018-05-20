@@ -25,6 +25,10 @@ class Car
      */
     private $engineStatus = self::ENGINE_OFF;
 
+
+    /**
+     * @param \DateTime|null $yearOfProduction
+     */
     public function __construct(\DateTime $yearOfProduction = null)
     {
         if (!$yearOfProduction) {
