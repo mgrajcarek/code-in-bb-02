@@ -10,10 +10,24 @@ class Car extends Vehicle
     private const ENGINE_ON = 'on';
     private const ENGINE_OFF = 'off';
 
+    private static $counter = 0;
+
     /**
      * @var string
      */
     private $engineStatus = self::ENGINE_OFF;
+
+    public function __construct(\DateTime $dateOfProduction = null)
+    {
+        self::$counter++;
+
+        parent::__construct($dateOfProduction);
+    }
+
+    public function __destruct()
+    {
+        self::$counter--;
+    }
 
     public function isEngineOn(): bool
     {
@@ -30,5 +44,8 @@ class Car extends Vehicle
         $this->engineStatus = self::ENGINE_OFF;
     }
 
-
+    public static function count(): int
+    {
+        return self::$counter;
+    }
 }

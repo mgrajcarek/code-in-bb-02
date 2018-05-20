@@ -70,7 +70,6 @@ class CarTest extends TestCase
         $this->assertEquals($currentYear, $car->getDateOfProduction());
     }
 
-
     public function testEngineIsByDefaultTurnedOff()
     {
         $this->assertFalse(
@@ -120,6 +119,11 @@ class CarTest extends TestCase
 HEREDOC;
 
         $this->assertEquals($exptected, $this->car->draw());
+    }
+
+    public function testCountsNumberOfCreatedCars()
+    {
+        $this->assertGreaterThan(1, Car::count());
     }
 
 }
