@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace CodeInBB;
 
-abstract class Vehicle {
+abstract class Vehicle implements Drawable {
 
     /**
      * @var string
@@ -45,5 +45,20 @@ abstract class Vehicle {
     public function getDateOfProduction(): \DateTime
     {
         return $this->dateOfProduction;
+    }
+
+    public function draw(): string
+    {
+        $carShape = <<<HEREDOC
+                  .
+    __  Max       |\
+ __/__\___________| \_
+|   ___    |  ,|   ___`-.
+|  /   \   |___/  /   \  `-.
+|_| (O) |________| (O) |____|
+   \___/          \___/
+HEREDOC;
+
+        return $carShape;
     }
 }

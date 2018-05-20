@@ -3,6 +3,7 @@
 namespace Test\CodeInBB;
 
 use CodeInBB\Car;
+use CodeInBB\Drawable;
 use CodeInBB\Vehicle;
 use PHPUnit\Framework\TestCase;
 
@@ -99,6 +100,26 @@ class CarTest extends TestCase
     public function testIsVehicle()
     {
         $this->assertInstanceOf(Vehicle::class, $this->car);
+    }
+
+    public function testIsDrawable()
+    {
+        $this->assertInstanceOf(Drawable::class, $this->car);
+    }
+
+    public function testItDrawsACar()
+    {
+        $exptected = <<<HEREDOC
+                  .
+    __  Max       |\
+ __/__\___________| \_
+|   ___    |  ,|   ___`-.
+|  /   \   |___/  /   \  `-.
+|_| (O) |________| (O) |____|
+   \___/          \___/
+HEREDOC;
+
+        $this->assertEquals($exptected, $this->car->draw());
     }
 
 }
