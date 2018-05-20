@@ -3,6 +3,7 @@
 namespace Test\CodeInBB;
 
 use CodeInBB\Car;
+use CodeInBB\Vehicle;
 use PHPUnit\Framework\TestCase;
 
 class CarTest extends TestCase
@@ -26,9 +27,8 @@ class CarTest extends TestCase
     }
 
     /**
-     *
      * @expectedException \Error
-     * @expectedExceptionMessage Cannot access private property CodeInBB\Car::$registrationNumber
+     * @expectedExceptionMessage Cannot access protected property CodeInBB\Car::$registrationNumber
      */
     public function testNoAccessToRegistrationNumberProperty()
     {
@@ -94,6 +94,11 @@ class CarTest extends TestCase
         $this->assertFalse(
             $this->car->isEngineOn()
         );
+    }
+
+    public function testIsVehicle()
+    {
+        $this->assertInstanceOf(Vehicle::class, $this->car);
     }
 
 }
