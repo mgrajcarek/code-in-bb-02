@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace CodeInBB;
 
-class Vehicle {
+abstract class Vehicle {
 
     /**
      * @var string
